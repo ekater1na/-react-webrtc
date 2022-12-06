@@ -19,6 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start:dev-server": "npx nodemon server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint .",
@@ -50,6 +51,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
+    "nodemon": "^2.0.20",
     "prettier": "^2.8.0"
   }
 }
