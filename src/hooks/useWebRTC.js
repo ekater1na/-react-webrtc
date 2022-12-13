@@ -126,7 +126,7 @@ export const useWebRTC = (roomID) => {
       localMediaStream.current = await navigator.mediaDevices.getUserMedia({
         audio: true,
         video: {
-          width: 1200,
+          width: 1280,
           height: 720
         }
       });
@@ -146,11 +146,12 @@ export const useWebRTC = (roomID) => {
       .catch((e) => console.error('Error getting userMedia:', e));
 
     return () => {
-      localMediaStream.current.getTracks().forEach((track) => track.stop());
-
+      if (localMediaStream.current) {
+        localMediaStream.current.getTracks().forEach((track) => track.stop());
+      }
       socket.emit(ACTIONS.LEAVE);
     };
-  }, [roomID]);
+  }, [roomID, addNewClient]);
 
   const provideMediaRef = useCallback((id, node) => {
     peerMediaElements.current[id] = node;
